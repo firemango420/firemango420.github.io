@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>My Guess Academia - lexicoprécis</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <style>
+        /* === GENERAL === */
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, Monospace;
+    white-space: pre-wrap;
+}
+
+.pre--multiline {
+    margin-top: 4px;
+    padding: 8px;
+    border: 2px solid;
+    border-radius: 5px;    
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+}
+
+.emoji {
+    width: 24px;
+    height: 24px;
+    margin: 0 1px;
+    vertical-align: middle;
+}
+
+.emoji--small {
+    width: 16px;
+    height: 16px;
+}
+
+.emoji--large {
+    width: 32px;
+    height: 32px;
+}
+
+.mention {
+    font-weight: 600;
+}
+
+/* === INFO === */
+
+.info {
+    display: flex;
+    max-width: 100%;
+    margin: 0 5px 10px 5px;    
+}
+
+.info__guild-icon-container {
+    flex: 0;
+}
+
+.info__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.info__metadata {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.info__guild-name {
+    font-size: 1.4em;
+}
+
+.info__channel-name {
+    font-size: 1.2em;
+}
+
+.info__channel-topic {
+    margin-top: 2px;
+}
+
+.info__channel-message-count {
+    margin-top: 2px;
+}
+
+.info__channel-date-range {
+    margin-top: 2px;
+}
+
+/* === CHATLOG === */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: flex;
+    margin: 0 10px;
+    padding: 15px 0;
+    border-top: 1px solid;
+}
+
+.chatlog__author-avatar-container {
+    flex: 0;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    flex: 1;
+    min-width: 50%;
+    margin-left: 20px;
+}
+
+.chatlog__author-name {
+    font-size: 1em;
+}
+
+.chatlog__timestamp {
+    margin-left: 5px;
+    font-size: .75em;
+}
+
+.chatlog__content {
+    padding-top: 5px;
+    font-size: .9375em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 5px;
+    font-size: .8em;
+}
+
+.chatlog__attachment {
+    margin: 5px 0;
+}
+
+.chatlog__attachment-thumbnail {
+    max-width: 50%;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    max-width: 520px;
+    margin-top: 5px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 4px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 10px;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    width: 100%;
+    display: flex;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.chatlog__embed-author-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 9px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: .875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 4px;
+    font-size: .875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 10px;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 4px;
+    font-size: .875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-size: .875em;
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 20px;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 10px;
+}
+
+.chatlog__embed-image {    
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 10px;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-weight: 600;
+    font-size: .75em;
+}
+
+.chatlog__reactions {
+    display: flex;    
+}
+
+.chatlog__reaction {
+    margin: 6px 2px 2px 2px;
+    padding: 2px 6px 2px 2px;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-emoji {
+    margin-left: 3px;
+    vertical-align: middle;
+}
+
+.chatlog__reaction-count {
+    font-size: .875em;
+    vertical-align: middle;
+}
+/* === GENERAL === */
+
+body {
+    background-color: #36393e;
+    color: #ffffffb3;
+}
+
+a {
+    color: #0096cf;
+}
+
+.pre {
+    background-color: #2f3136;
+}
+
+.pre--multiline {
+    border-color: #282b30;
+    color: #839496;
+}
+
+.mention {
+    background-color: #738bd71a;
+    color: #7289da;
+}
+
+/* === INFO === */
+
+.info__guild-name {
+    color: #ffffff;
+}
+
+.info__channel-name {
+    color: #ffffff;
+}
+
+.info__channel-topic {
+    color: #ffffff;
+}
+
+/* === CHATLOG === */
+
+.chatlog__message-group {
+    border-color: #ffffff0a;
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: #ffffff33;
+}
+
+.chatlog__edited-timestamp {
+    color: #ffffff33;
+}
+
+.chatlog__embed-content-container {
+    background-color: #2e30364d;
+    border-color: #2e303699;
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: #ffffff99;
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: #ffffff99;
+}
+
+.chatlog__embed-footer {
+    color: #ffffff99;
+}
+
+.chatlog__reaction {
+    background-color: #ffffff0a;
+}
+
+.chatlog__reaction-count {
+    color: #ffffff4d;
+}
+    </style>
+</head>
+<body>
+    
+<div class="info">
+    <div class="info__guild-icon-container">
+        <img class="info__guild-icon" src="dictionnaire_fichiers/94525b973880cadcd83e964c70ff8f90.png">
+    </div>
+    <div class="info__metadata">
+        <div class="info__guild-name">My Guess Academia</div>
+        <div class="info__channel-name">lexicoprécis</div>
+        
+            <div class="info__channel-topic"></div>
+
+        <div class="info__channel-message-count">3 messages</div>
+        
+    </div>
+</div>
+
+<div class="chatlog">
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="dictionnaire_fichiers/692f9eb34e9080d10c737e863806e70d.png">
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Chad#1234">Chad</span>
+                <span class="chatlog__timestamp">29-Jan-18 05:47 PM</span>
+
+                        <div class="chatlog__content">
+                            <u><b>MOTS :</b></u>  (page 1)<br><br><u>GUESSER</u> : /gese/, <i>v. intr.</i>, vient de l'expression anglaise <i>I guess</i>. <br><div class="pre pre--multiline">1. Se dépatouiller intellectuellement.</div><br>Ex :<br>"*- Ca va ta dépression en ce moment ?<br>- Bah je <b>guess</b>."*<br><br><div class="pre pre--multiline">2. Contemplation d'une scène. :ref:</div><br>Ex :<br>"*- Je suis pas raciste mais les arabes c'est quand même des voleurs !<br>- Mmh, ce que tu dis me fais bien <b>guesser</b> <img class="emoji" title=":ref:" src="dictionnaire_fichiers/405564124878209035.png">*"<br>Note : Ici, le guesseur ne prononcerait pas cette phrase, il se contenterait de guesser en silence.<br><br><div class="pre pre--multiline">3. Faire une action avec un mood de guesseur.</div><br>Ex :<br>"*- Tu pourras faire le logo de My Guess Academia stp ?<br>- Ouais je vais <b>guesser</b> un truc.*"<br><br><br><u>GUESSEUROLOGIE</u> : /gesœʁoloʒi/, <i>n. f.</i>, vient du verbe <i>guesser</i>, aussi orthographié <i>guessorologie</i><br><div class="pre pre--multiline">Pseudo-science. Mélange de sociologie et de bitching en terrasse.</div><br><br><br><u>GUESSBLOQUER</u> : /gesbloke/, <i>v. tr.</i>, vient du verbe <i>guesser</i> et de l'expression anglaise <i>cockblock</i>, aussi orthographié <i>guessblocker</i>. contraire : guessbooster.<br><div class="pre pre--multiline">Empêcher le guessage d'une personne.</div><br>Ex :<br>"<i>Je fumais tranquille et d'un coup mon père m'appelle, ça m'a <b>guessbloqué</b>.</i>"<br><br><br><u>CUCK</u> : /kœk/, <i>n.</i>, vient de l'anglais <i>cuckold</i>. <br><div class="pre pre--multiline">1. Flagorneur prêt à throw pour l'amour/l'attention d'une femme ou de quelqu'un qu'il juge supérieur à lui.</div><br>Note : Une femme peut aussi être cuck, même si c'est plus rare.<br><div class="pre pre--multiline">2. Soumis s'accrochant à une idéologie de façon aveuglante.</div><br><div class="pre pre--multiline">3. Nom affectueux donné à une personne ou un animal de compagnie.</div><br><br><br><u>CUCKISER</u> : /kœkize/, <i>v. tr.</i>, vient du nom <i>cuck</i>.<br><div class="pre pre--multiline">Mettre quelqu'un en position cuck.</div><br><br><br><u>COUNTERCUCK</u> : /kuntœʁkœk/, <i>v. tr.</i>, vient du nom <i>cuck</i> et de l'anglais <i>counter</i>.<br><div class="pre pre--multiline">Synonyme de contrecarrer. Empêcher d'agir.</div><br>Ex :<br>"<i>Jérémy, ce cuck, allait faire un move sur une go mais on l'a <b>countercuck</b>.</i>"
+
+                                <span class="chatlog__edited-timestamp" title="15-Apr-18 06:38 PM">(edited)</span>
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="dictionnaire_fichiers/692f9eb34e9080d10c737e863806e70d.png">
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Chad#1234">Chad</span>
+                <span class="chatlog__timestamp">30-Jan-18 05:37 PM</span>
+
+                        <div class="chatlog__content">
+                            <u><b>MOTS :</b></u>  (page 2)<br><br><u>DEFCON</u> : /dɛfkɔn/, <i>n. m.</i>, vient du niveau d'alerte de l'armée américaine.<br><div class="pre pre--multiline">Désigne le niveau de conscience du monde et de soi.</div><br>Note : S'utilise comme le mot <i>level</i> en anglais.<br><br><u>PIPÉ</u> : /pipe/, <i>adj.</i>, expression du Sud.<br><div class="pre pre--multiline">Super, génial, formidable, cool.</div><br>Ex :<br>"<i>Ce soir en rentrant de mon boulot aliénant je vais me rouler un ptit stickos, ça sera <b>pipé</b> !</i> "<br><br><u>PLAY</u> : /plɛ/, <i>n. m.</i>, vient de l'anglais <i>play</i>, plus précisément du langage MOBA, désignant une manoeuvre alliée bénéfique pour l'équipe.<br><div class="pre pre--multiline">Désigne une action positive extérieure ou intérieure, consciente ou inconsciente.</div><br>Ex :<br>"<i>J'ai parfaitement dosé la sauce pour mes coquillettes, ce <b>play</b> !</i> "<br><br><br><u>THROW</u> : /tʁo/, <i>n. m.</i>, vient de l'anglais <i>throw</i>, du langage MOBA, désignant une manoeuvre alliée faisant perdre l'équipe.<br><div class="pre pre--multiline">Désigne une action négative extérieure ou intérieure, consciente ou inconsciente.</div><br>Ex :<br>"<i>J'ai fait tomber mon bol de coquillettes par terre, ce <b>throw</b> !</i> "<br><br><br><u>RIVALS</u> : /ʁivals/, <i>interj.</i>, étymologie cachée.<br><div class="pre pre--multiline">Exprime la confusion chez le locuteur.</div><br>Ex :<br>"*- C’est vraiment nul à chier The Good Place.<br>- <b>Rivals</b> ?* "<br><br><br><u>TURBO-</u> : /tyʁbo/, <i>pref.</i><br><div class="pre pre--multiline">S'emploie pour augmenter le degré d'intensité d'un mot.</div><br>Ex :<br>"<i>On a <b>turboguessé</b> à plusieurs l’autre soir, c’était pipé.</i>"<br><br><br><u>CURSED</u> : /kœʁst/, <i>adj.</i>, vient de l'anglais <i>cursed</i>.<br><div class="pre pre--multiline">1. Maudit, glauque, baddant.</div><br>Ex : <a href="https://twitter.com/cursedimages_2">https://twitter.com/cursedimages_2</a><br><br><div class="pre pre--multiline">2. Désigne une esthétique précise, assez sale, terne, grisâtre.</div><br>Ex : <a href="https://www.youtube.com/watch?v=7G64yjFBhck">https://www.youtube.com/watch?v=7G64yjFBhck</a>
+
+                                <span class="chatlog__edited-timestamp" title="26-Mar-18 07:10 PM">(edited)</span>
+                        </div>
+
+
+                        <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(79,84,92,255)"></div>
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://twitter.com/cursedimages_2">cursed images (@cursedimages_2)</a>
+                                            </div>
+
+                                            <div class="chatlog__embed-description">all of these images are cursed...(carrying on the important work of @cursedimages).</div>
+
+                                            <div class="chatlog__embed-fields">
+                                                    <div class="chatlog__embed-field  chatlog__embed-field--inline ">
+                                                            <div class="chatlog__embed-field-name">Tweets</div>
+                                                            <div class="chatlog__embed-field-value">1327</div>
+                                                    </div>
+                                                    <div class="chatlog__embed-field  chatlog__embed-field--inline ">
+                                                            <div class="chatlog__embed-field-name">Followers</div>
+                                                            <div class="chatlog__embed-field-value">58944</div>
+                                                    </div>
+                                            </div>
+                                    </div>
+
+                                        <div class="chatlog__embed-thumbnail-container">
+                                            <a class="chatlog__embed-thumbnail-link" href="https://pbs.twimg.com/profile_images/807834441016115201/X3y5ocnb_normal.jpg">
+                                                <img class="chatlog__embed-thumbnail" src="dictionnaire_fichiers/X3y5ocnb_normal.jpg">
+                                            </a>
+                                        </div>
+                                </div>    
+
+
+                                    <div class="chatlog__embed-footer">
+                                                <img class="chatlog__embed-footer-icon" src="dictionnaire_fichiers/apple-touch-icon-192x192.png">
+                                        
+                                        <span class="chatlog__embed-footer-text">
+                                                    Twitter
+                                                    
+
+                                        </span>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="chatlog__embed">
+                            <div class="chatlog__embed-color-pill" style="background-color: rgba(255,0,0,1)"></div>
+                            <div class="chatlog__embed-content-container">
+                                <div class="chatlog__embed-content">
+                                    <div class="chatlog__embed-text">
+                                            <div class="chatlog__embed-author">
+
+                                                    <span class="chatlog__embed-author-name">
+                                                            <a class="chatlog__embed-author-name-link" href="https://www.youtube.com/user/LeGrabuge">LeGrabuge</a>
+                                                    </span>
+                                            </div>
+
+                                            <div class="chatlog__embed-title">
+                                                    <a class="chatlog__embed-title-link" href="https://www.youtube.com/watch?v=7G64yjFBhck">LE CAUET BURGER - LE GRABUGE</a>
+                                            </div>
+
+                                            <div class="chatlog__embed-description">Après
+ 10 ans en hôpital psychiatrique, Florent, dépressif chronique depuis 
+l'arrêt du Cauet Burger chez Quick, retrouve ses deux amis d'enfance, 
+Tristan et G...</div>
+
+                                    </div>
+
+                                        <div class="chatlog__embed-thumbnail-container">
+                                            <a class="chatlog__embed-thumbnail-link" href="https://i.ytimg.com/vi/7G64yjFBhck/maxresdefault.jpg">
+                                                <img class="chatlog__embed-thumbnail" src="dictionnaire_fichiers/maxresdefault.jpg">
+                                            </a>
+                                        </div>
+                                </div>    
+
+
+                            </div>
+                        </div>
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="dictionnaire_fichiers/692f9eb34e9080d10c737e863806e70d.png">
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Chad#1234">Chad</span>
+                <span class="chatlog__timestamp">30-Jan-18 08:00 PM</span>
+
+                        <div class="chatlog__content">
+                            <u><b>EXPRESSIONS :</b></u><br><br><i>"ÊTRE LÀ À GUESSER"</i> :<br><div class="pre pre--multiline">Désigne l'état de guessage dans le moment présent. Utilisé pour dire que l'on ne fait rien de particulier.</div><br>Ex :<br>"*- Du coup y a un truc ce soir ? Je me suis réveillé pour savoir.<br>- Ah j'en sais rien je suis littéralement <b>là à guesser</b>.*"<br><br><br><i>"ESSAYER DE GUESSER"</i> : <br><div class="pre pre--multiline">Faire en sorte de pouvoir guesser dans le futur, sans réussir à guesser actuellement.</div><br>Ex :<br>"*- T'arrives à joindre les deux bouts en ce moment ?<br>- J'<b>essaye de guesser</b>.*"<br><br><br><i>"ESPACE MENTAL"</i> :<br><div class="pre pre--multiline">Endroit abstrait où s’imprime notre environnement et où nos mécanismes psychologiques et physiologiques évoluent.</div><br><br><br><i>"ÊTRE ENCUCKÉ DE QUELQU'UN"</i> : <br><div class="pre pre--multiline">Entre le crush et l'amour. Quand un.e homme/femme s'est épris.e d'un.e homme/femme au point d'en devenir un cuck.</div><br><br><br><i>"ÊTRE EN POSITION ___"</i> : <br><div class="pre pre--multiline">S'emploie quand on agit comme une personne ou catégorie de personne sans nécessairement en faire partie.</div><br>Ex :<br>"<i>J'ai vu une meuf l'autre jour, j'étais <b>en position cuck</b> toute la soirée.</i>"<br><br><br><i>"BAIL À LA SIX FEET"</i> :  inspiré par la série <i>Six Feet Under</i>, aussi appelé simplement "<i>bail Six Feet</i> ".<br><div class="pre pre--multiline">Evènement particulièrement tragique.</div><br><br><br><i>"FAIRE UNE SNK"</i>: vient du manga <i>Shingeki No Kyojin</i>.<br><div class="pre pre--multiline">Retourner le cerveau de quelqu’un pour lui changer sa vision du monde, de la société.</div><br>Ex :<br>"<i>L’autre jour j’ai fait une <b>SNK</b> à un élève, je lui ai raconté des bails defcon 3 alors qu’il était que defcon 5.</i>"<br><br><br><i>"FAIRE UNE REINER"</i>:  vient du manga <i>Shingeki No Kyojin</i>.<br><div class="pre pre--multiline">Faire une blague à quelqu’un de defcon inférieur, en faisant référence à un élément de defcon supérieur, qu’il ne peut pas comprendre.</div><br><br><br><i>"DOMAINE DE PRÉCISION"</i>: <br><div class="pre pre--multiline">Savoir étendu sur un sujet précis. Désigne aussi simplement un intérêt particulier, sortant de l'ordinaire.</div><br><br><br><i>"DIMENSION PRÉCISE"</i>: <br><div class="pre pre--multiline">Fait, anecdote particulière qui rajoute de la précision sur un individu.</div>
+
+                                <span class="chatlog__edited-timestamp" title="26-Mar-18 09:06 PM">(edited)</span>
+                        </div>
+
+
+
+            </div>
+        </div>
+</div>
+
+
+</body><script src="dictionnaire_fichiers/inject.js"></script></html>
